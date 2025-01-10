@@ -1,9 +1,15 @@
-import supabase from "./init.js";
+import supabaseClient from "./init.js";
 import { hashPassword } from "./hash.js";
-export const createUser = async (firstname, lastname, email, password) => {
+import user from "./loginClient.js";
+const createUser = async (firstname, lastname, email, password) => {
+    // Authentification côté client supabase
+    const userLogged = await user;
+    if (!userLogged) {
+        return false;
+    }
     try {
         const hashedPassword = await hashPassword(password);
-        const { error } = await supabase.from("user").insert({
+        const { error } = await supabaseClient.from("user").insert({
             firstname,
             lastname,
             email,
@@ -20,3 +26,4 @@ export const createUser = async (firstname, lastname, email, password) => {
         return false;
     }
 };
+export default createUser;

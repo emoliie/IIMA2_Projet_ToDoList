@@ -1,11 +1,11 @@
-import { createUser } from "./createUser.js";
+import createUser from "./createUser.js";
 
 const handleSubmit = async (e: SubmitEvent): Promise<void> => {
   // Empêche le rechargement de la page
   e.preventDefault();
 
   // Récupère les données du formulaire en les convertissant en type 'HTMLFormElement'
-  const form = e.target as HTMLFormElement
+  const form = e.target as HTMLFormElement;
   const data = new FormData(form);
 
   // Extraction des données
@@ -13,6 +13,8 @@ const handleSubmit = async (e: SubmitEvent): Promise<void> => {
   const lastname = data.get("lastname") as string;
   const email = data.get("email") as string;
   const password = data.get("password") as string;
+
+  console.log(firstname, lastname, email, password);
 
   // Validation simple des données
   if (!firstname || !lastname || !email || !password) {
@@ -35,7 +37,6 @@ const handleSubmit = async (e: SubmitEvent): Promise<void> => {
     alert("Une erreur s'est produite. Veuillez réessayer.");
   }
 };
-
 
 // Ajout de l'écouteur d'événement pour le formulaire
 const form = document.querySelector<HTMLFormElement>(".form");

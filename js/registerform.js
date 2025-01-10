@@ -1,4 +1,4 @@
-import { createUser } from "./createUser.js";
+import createUser from "./createUser.js";
 const handleSubmit = async (e) => {
     // Empêche le rechargement de la page
     e.preventDefault();
@@ -10,6 +10,7 @@ const handleSubmit = async (e) => {
     const lastname = data.get("lastname");
     const email = data.get("email");
     const password = data.get("password");
+    console.log(firstname, lastname, email, password);
     // Validation simple des données
     if (!firstname || !lastname || !email || !password) {
         alert("Tous les champs sont requis !");
