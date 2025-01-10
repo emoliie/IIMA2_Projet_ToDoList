@@ -5,23 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inscription</title>
     <link href="../style/output.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <div class="">
-      <form action="" method="POST" class="form">
-        <label for="firstname">Prénom : </label>
-        <input type="text" id="firstname" name="firstname" />
+  <body
+    class="w-screen h-screen bg-[url('../img/bg-img.png')] flex justify-center items-center font-['Sour_Gummy']"
+  >
+    <div
+      class="w-1/2 bg-white border-2 rounded-3xl border-[#49315b] flex flex-col items-center shadow-[10px_10px_0_0_rgba(0,0,0,0.75)]"
+    >
+      <div
+        class="w-full h-10 flex gap-1 items-center justify-start p-5 bg-[#B076DC] rounded-t-3xl border-b-2 border-[#49315b]"
+      >
+        <div class="w-5 h-5 bg-white rounded-full"></div>
+        <div class="w-5 h-5 bg-white rounded-full"></div>
+        <div class="w-5 h-5 bg-white rounded-full"></div>
+      </div>
+      <form
+        action=""
+        method="POST"
+        class="form flex flex-col justify-center items-center w-1/2 py-10"
+      >
+        <h1 class="text-3xl text-[#49315b] font-['Gorditas'] font-bold">
+          Inscription
+        </h1>
         <br />
-        <label for="lastname">Nom : </label>
-        <input type="text" id="lastname" name="lastname" />
+        <input
+          type="text"
+          id="firstname"
+          name="firstname"
+          placeholder="Prénom"
+          class="px-1 py-2 border-2 border-[#49315b] rounded-lg placeholder:text-[#99939e] placeholder:text-center"
+        />
         <br />
-        <label for="email">Email : </label>
-        <input type="text" id="email" name="email" />
+        <input
+          type="text"
+          id="lastname"
+          name="lastname"
+          placeholder="Nom"
+          class="px-1 py-2 border-2 border-[#49315b] rounded-lg placeholder:text-[#99939e] placeholder:text-center"
+        />
         <br />
-        <label for="password">Mot de Passe : </label>
-        <input type="password" id="password" name="password" />
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Email"
+          class="px-1 py-2 border-2 border-[#49315b] rounded-lg placeholder:text-[#99939e] placeholder:text-center"
+        />
         <br />
-        <input type="submit" name="submit" value="Envoyer" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Mot de passe"
+          class="px-1 py-2 border-2 border-[#49315b] rounded-lg placeholder:text-[#99939e] placeholder:text-center"
+        />
+        <br />
+        <input
+          type="submit"
+          name="submit"
+          value="S'inscrire"
+          class="cursor-pointer text-[#49315b] px-4 py-2 bg-[#B076DC] border-2 border-[#49315b] rounded-lg"
+        />
       </form>
     </div>
     <script type="module" src="../js/registerForm.js"></script>
