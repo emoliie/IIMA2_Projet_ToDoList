@@ -15,6 +15,6 @@ const loginClient = async () => {
   return data;
 };
 
-const user = loginClient();
+const userClient = loginClient();
 
-export default user;
+export default userClient;

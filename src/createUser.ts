@@ -1,6 +1,6 @@
 import supabaseClient from "./init.js";
 import { hashPassword } from "./hash.js";
-import user from "./loginClient.js";
+import userClient from "./loginClient.js";
 
 const createUser = async (
   firstname: string,
@@ -10,7 +10,7 @@ const createUser = async (
 ): Promise<boolean> => {
 
   // Authentification côté client supabase
-  const userLogged = await user;
+  const userLogged = await userClient;
   if (!userLogged) {
     return false;
   }

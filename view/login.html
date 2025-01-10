@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inscription</title>
+    <title>Connexion</title>
     <link href="../style/output.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -30,24 +30,8 @@
         class="form flex flex-col justify-center items-center w-1/2 py-10"
       >
         <h1 class="text-3xl text-[#49315b] font-['Gorditas'] font-bold">
-          Inscription
+          Connexion
         </h1>
-        <br />
-        <input
-          type="text"
-          id="firstname"
-          name="firstname"
-          placeholder="Prénom"
-          class="px-1 py-2 border-2 border-[#49315b] rounded-lg placeholder:text-[#99939e] placeholder:text-center"
-        />
-        <br />
-        <input
-          type="text"
-          id="lastname"
-          name="lastname"
-          placeholder="Nom"
-          class="px-1 py-2 border-2 border-[#49315b] rounded-lg placeholder:text-[#99939e] placeholder:text-center"
-        />
         <br />
         <input
           type="text"
@@ -65,16 +49,16 @@
           class="px-1 py-2 border-2 border-[#49315b] rounded-lg placeholder:text-[#99939e] placeholder:text-center"
         />
         <br />
-        <p>Déjà <a href="/view/login.html" class="text-[#B076DC]">inscrit</a> ?</p>
+        <p>Pas encore <a href="/view/register.html" class="text-[#B076DC] ">inscrit</a> ?</p>
         <br />
         <input
           type="submit"
           name="submit"
-          value="S'inscrire"
+          value="Se connecter"
           class="cursor-pointer text-[#49315b] px-4 py-2 bg-[#B076DC] border-2 border-[#49315b] rounded-lg"
         />
       </form>
     </div>
-    <script type="module" src="../js/registerForm.js"></script>
+    <script type="module" src="../js/loginForm.js"></script>
   </body>
 </html>
