@@ -12,7 +12,7 @@
     />
   </head>
   <body
-    class="w-screen h-screen bg-[url('../assets/bg-img.png')] flex justify-center items-center font-['Sour_Gummy'] text-xl"
+    class="w-screen h-screen bg-[url('../assets/bg-img.png')] flex justify-center items-center font-['Sour_Gummy'] text-xl text-[#49315b]"
   >
     <div
       class="w-1/2 bg-white overflow-hidden border-4 rounded-3xl border-[#49315b] flex flex-col items-center shadow-[10px_10px_0_0_rgba(0,0,0,0.75)]"
@@ -21,15 +21,15 @@
         class="w-full h-15 flex gap-1 items-center justify-start p-5 bg-[#B076DC] border-b-4 border-[#49315b]"
       >
         <div class="w-5 h-5 bg-white rounded-full"></div>
-        <div class="w-5 h-5 bg-white rounded-full"></div>
-        <div class="w-5 h-5 bg-white rounded-full"></div>
+        <div class="w-5 h-5 bg-yellow-300 rounded-full"></div>
+        <div class="w-5 h-5 bg-[#744e91] rounded-full"></div>
       </div>
       <form
         action=""
         method="POST"
         class="form flex flex-col justify-center items-center w-1/2 py-10"
       >
-        <h1 class="text-3xl text-[#49315b] font-['Gorditas'] font-bold">
+        <h1 class="text-3xl font-['Gorditas'] font-bold">
           Connexion
         </h1>
         <br />
@@ -51,14 +51,18 @@
         <br />
         <p>
           Pas encore inscrit ?
-          <a href="/view/register.html" class="text-[#B076DC] ease-in-out duration-300 hover:text-[#49315b]">S'inscrire</a>
+          <a
+            href="/view/register.html"
+            class="text-[#B076DC] ease-in-out duration-300 hover:text-[#49315b]"
+            >S'inscrire</a
+          >
         </p>
         <br />
         <input
           type="submit"
           name="submit"
           value="Se connecter"
-          class="cursor-pointer text-[#49315b] px-4 py-2 bg-[#B076DC] border-2 border-[#49315b] rounded-lg"
+          class="cursor-pointer px-4 py-2 bg-[#B076DC] border-2 border-[#49315b] rounded-lg ease-in-out duration-300 hover:bg-[#7d549c] hover:text-white hover:border-[#7d549c] font-semibold"
         />
       </form>
     </div>

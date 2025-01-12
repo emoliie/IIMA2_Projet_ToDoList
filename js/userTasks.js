@@ -18,15 +18,21 @@ async function showTasks() {
         if (!unfinishedContainer) {
             return;
         }
-        unfinishedContainer.appendChild(createTaskElement(task));
-        unfinishedContainer.appendChild(createUnfinishedTaskButtons(task));
+        const div = document.createElement("div");
+        div.className = "flex flex-col p-4 border-2 border-[#49315b] rounded-lg gap-4";
+        unfinishedContainer.appendChild(div);
+        div.appendChild(createTaskElement(task));
+        div.appendChild(createUnfinishedTaskButtons(task));
     });
     finishedTasks.forEach((task) => {
         if (!finishedContainer) {
             return;
         }
+        const div = document.createElement("div");
+        div.className = "flex flex-col p-4 border-2 border-[#49315b] rounded-lg gap-4";
+        finishedContainer.appendChild(div);
         createTaskElement(task);
-        finishedContainer.appendChild(createTaskElement(task));
+        div.appendChild(createTaskElement(task));
     });
 }
 async function showWelcome() {

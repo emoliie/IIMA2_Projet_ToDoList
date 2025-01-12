@@ -4,7 +4,6 @@ import {
 } from "./components/createElement.js";
 import { getTasks } from "./service/task.js";
 import { getUser } from "./service/user.js";
-import { Task } from "./types/task.js";
 import { getFinishedTasks, getUnfinishedTasks } from "./utils/taskStatus.js";
 
 async function showTasks() {
@@ -24,8 +23,13 @@ async function showTasks() {
     if (!unfinishedContainer) {
       return;
     }
-    unfinishedContainer.appendChild(createTaskElement(task));
-    unfinishedContainer.appendChild(createUnfinishedTaskButtons(task));
+    const div = document.createElement("div");
+    div.className = "flex flex-col p-4 border-2 border-[#49315b] rounded-lg gap-4";
+
+    unfinishedContainer.appendChild(div);
+
+    div.appendChild(createTaskElement(task));
+    div.appendChild(createUnfinishedTaskButtons(task));
   });
 
   finishedTasks.forEach((task) => {
@@ -33,8 +37,14 @@ async function showTasks() {
       return;
     }
 
+    const div = document.createElement("div");
+    div.className = "flex flex-col p-4 border-2 border-[#49315b] rounded-lg gap-4";
+
+    finishedContainer.appendChild(div);
+
     createTaskElement(task);
-    finishedContainer.appendChild(createTaskElement(task));
+    div.appendChild(createTaskElement(task));
+    
   });
 }
 

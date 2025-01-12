@@ -12,27 +12,48 @@
     />
   </head>
   <body
-    class="w-screen h-screen bg-[url('../assets/bg-img.png')] flex justify-center items-center font-['Sour_Gummy'] text-xl"
+    class="w-screen h-screen bg-[url('../assets/bg-img.png')] flex justify-center items-center font-['Sour_Gummy'] text-xl text-[#49315b]"
   >
     <div
-      class="w-3/4 bg-white overflow-hidden border-4 rounded-3xl border-[#49315b] flex flex-col items-center shadow-[10px_10px_0_0_rgba(0,0,0,0.75)]"
+      class="w-3/4 h-3/4 bg-white overflow-hidden border-4 rounded-3xl border-[#49315b] flex flex-col items-center shadow-[10px_10px_0_0_rgba(0,0,0,0.75)]"
     >
       <div
         class="w-full h-15 flex gap-1 items-center justify-start p-5 bg-[#B076DC] border-b-4 border-[#49315b]"
       >
         <div class="w-5 h-5 bg-white rounded-full"></div>
-        <div class="w-5 h-5 bg-white rounded-full"></div>
-        <div class="w-5 h-5 bg-white rounded-full"></div>
+        <div class="w-5 h-5 bg-yellow-300 rounded-full"></div>
+        <div class="w-5 h-5 bg-[#744e91] rounded-full"></div>
       </div>
 
-      <h1>Bienvenue <span id="username"></span> !</h1>
+      <div class="w-full h-full px-28 py-10 flex flex-col gap-5">
+        <div class="flex justify-between">
+          <h1 class="text-3xl font-['Gorditas'] font-bold">
+            Bienvenue <span id="username"></span> !
+          </h1>
+          <button
+            id="logout-btn"
+            class="ease-in-out duration-300 hover:text-red-500"
+          >
+            Déconnexion
+          </button>
+        </div>
 
-      <button id="logout-btn">Déconnexion</button>
-      <a href="../view/create-task.html">+</a>
+        <a
+          href="../view/create-task.html"
+          class="w-1/3 px-4 py-2 border-2 border-[#49315b] rounded-lg"
+          >Ajouter une tâche +</a
+        >
 
-      <div id="tasks-container">
-        <div id="unfinished"><h2>En cours</h2></div>
-        <div id="finished"><h2>Terminée</h2></div>
+        <div
+          id="tasks-container"
+          class="flex flex-col gap-4 h-2/3 overflow-y-scroll"
+        >
+          <h2 class="text-2xl font-['Gorditas']">En cours</h2>
+          <div id="unfinished" class="grid grid-cols-3 gap-4"></div>
+
+          <h2 class="text-2xl font-['Gorditas']">Terminée</h2>
+          <div id="finished" class="grid grid-cols-3 gap-4"></div>
+        </div>
       </div>
     </div>
     <script type="module" src="../js/logoutUser.js"></script>
