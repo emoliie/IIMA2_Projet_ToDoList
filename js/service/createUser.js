@@ -1,6 +1,6 @@
-import supabaseClient from "./client/init.js";
-import { hashPassword } from "./hash.js";
-import userClient from "./client/loginClient.js";
+import supabaseClient from "../client/init.js";
+import { hashPassword } from "../hash.js";
+import userClient from "../client/loginClient.js";
 const createUser = async (firstname, lastname, email, password) => {
     // Authentification côté client supabase
     const client = await userClient;

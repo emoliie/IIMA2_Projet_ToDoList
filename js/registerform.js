@@ -1,4 +1,4 @@
-import createUser from "./createUser.js";
+import { createUser } from "./service/user.js";
 const handleSubmit = async (e) => {
     // Empêche le rechargement de la page
     e.preventDefault();
@@ -20,8 +20,7 @@ const handleSubmit = async (e) => {
         // Appel de la fonction createUser
         const success = await createUser(firstname, lastname, email, password);
         if (success) {
-            alert("Inscription réussie !");
-            // form.reset(); // Réinitialise le formulaire
+            window.location.href = "../view/login.html";
         }
         else {
             alert("Erreur lors de l'inscription. Veuillez réessayer.");

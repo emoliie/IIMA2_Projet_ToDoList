@@ -1,4 +1,4 @@
-import { login } from "./service/auth.js";
+import { createTask } from "./service/task.js";
 const handleSubmit = async (e) => {
     // Empêche le rechargement de la page
     e.preventDefault();
@@ -6,27 +6,28 @@ const handleSubmit = async (e) => {
     const form = e.target;
     const data = new FormData(form);
     // Extraction des données
-    const email = data.get("email");
-    const password = data.get("password");
-    console.log(email, password);
+    const title = data.get("title");
+    const description = data.get("description");
+    const deadline = data.get("deadline");
     // Validation simple des données
-    if (!email || !password) {
+    if (!title || !deadline) {
         alert("Tous les champs sont requis !");
         return;
     }
     try {
-        // Appel de la fonction getUser
-        const success = await login(email, password);
+        // Appel de la fonction createtask
+        const success = await createTask(title, description, new Date(deadline));
         if (success) {
-            window.location.href = "../view/home.html";
+            alert("Tâche créée avec succès !");
+            form.reset(); // Réinitialise le formulaire
         }
         else {
-            alert("Erreur lors de la connexion. Veuillez réessayer.");
+            alert("Erreur lors de la création de la tâche.");
         }
     }
-    catch (error) {
-        console.error("Erreur:", error);
-        alert("Une erreur s'est produite. Veuillez réessayer.");
+    catch (err) {
+        console.error("Erreur :", err);
+        alert("Une erreur s'est produite lors de la création de la tâche.");
     }
 };
 // Ajout de l'écouteur d'événement pour le formulaire

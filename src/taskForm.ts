@@ -1,4 +1,4 @@
-import { createUser } from "./service/user.js";
+import { createTask } from "./service/task.js";
 
 const handleSubmit = async (e: SubmitEvent): Promise<void> => {
   // Empêche le rechargement de la page
@@ -9,31 +9,33 @@ const handleSubmit = async (e: SubmitEvent): Promise<void> => {
   const data = new FormData(form);
 
   // Extraction des données
-  const firstname = data.get("firstname") as string;
-  const lastname = data.get("lastname") as string;
-  const email = data.get("email") as string;
-  const password = data.get("password") as string;
-
-  console.log(firstname, lastname, email, password);
+  const title = data.get("title") as string;
+  const description = data.get("description") as string;
+  const deadline = data.get("deadline") as string;
 
   // Validation simple des données
-  if (!firstname || !lastname || !email || !password) {
+  if (!title || !deadline) {
     alert("Tous les champs sont requis !");
     return;
   }
 
   try {
-    // Appel de la fonction createUser
-    const success = await createUser(firstname, lastname, email, password);
+    // Appel de la fonction createtask
+    const success = await createTask(
+      title,
+      description,
+      new Date(deadline),
+    );
 
     if (success) {
-      window.location.href = "../view/login.html";
+      alert("Tâche créée avec succès !");
+      form.reset(); // Réinitialise le formulaire
     } else {
-      alert("Erreur lors de l'inscription. Veuillez réessayer.");
+      alert("Erreur lors de la création de la tâche.");
     }
-  } catch (error) {
-    console.error("Erreur:", error);
-    alert("Une erreur s'est produite. Veuillez réessayer.");
+  } catch (err) {
+    console.error("Erreur :", err);
+    alert("Une erreur s'est produite lors de la création de la tâche.");
   }
 };
 

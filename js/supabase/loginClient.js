@@ -1,4 +1,4 @@
-import supabaseClient from "./client/init.js";
+import supabaseClient from "./init.js";
 const loginClient = async () => {
     // Changement de supabase pour supabaseClient
     const { data, error } = await supabaseClient.auth.signInWithPassword({

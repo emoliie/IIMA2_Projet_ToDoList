@@ -1,21 +1,34 @@
-import supabaseClient from "./init.js";
-import userClient from "./loginClient.js";
+import supabaseClient from "../supabase/init.js";
+import userClient from "../supabase/loginClient.js";
+import { hashPassword } from "../utils/hash.js";
 
-const getUser = async (email: string, password: string) => {
+const isLoggedIn = (): boolean => {
+  return !!localStorage.getItem("userId");
+};
+
+const login = async (email: string, password: string) => {
   // Authentification préalable via loginClient
-  const userLogged = await userClient;
-  if (!userLogged) {
+  const client = await userClient;
+  if (!client) {
     console.error("Authentification échouée.");
     return false;
+  }
+
+  if (isLoggedIn()) {
+    window.location.href = "../view/home.html";
+  } else {
+    console.log("Aucun utilisateur connecté.");
   }
 
   try {
     // Requête pour récupérer l'utilisateur avec l'email et le mot de passe donnés
     const { data, error } = await supabaseClient
       .from("user")
-      .select("*")
+      .select("*", { exclude: ["password"] })
+      .limit(1)
+      .single()
       .eq("email", email) // Fix: Ajout de la valeur du champ à vérifier
-      .eq("password", password);
+      .eq("password", await hashPassword(password));
 
     if (error) {
       console.error("Erreur Supabase:", error.message);
@@ -27,7 +40,9 @@ const getUser = async (email: string, password: string) => {
       return null;
     }
 
-    console.log("Utilisateur récupéré :", data);
+    // Stocke l'ID utilisateur dans localStorage
+    localStorage.setItem("userId", data.id);
+
     return data;
   } catch (err) {
     console.error("Erreur lors de la récupération des données :", err);
@@ -35,4 +50,4 @@ const getUser = async (email: string, password: string) => {
   }
 };
 
-export default getUser;
+export { login };

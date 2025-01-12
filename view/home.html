@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accueil</title>
+    <link href="../style/output.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="w-screen h-screen bg-[url('../assets/bg-img.png')] flex justify-center items-center font-['Sour_Gummy'] text-xl"
+  >
+    <div
+      class="w-3/4 bg-white overflow-hidden border-4 rounded-3xl border-[#49315b] flex flex-col items-center shadow-[10px_10px_0_0_rgba(0,0,0,0.75)]"
+    >
+      <div
+        class="w-full h-15 flex gap-1 items-center justify-start p-5 bg-[#B076DC] border-b-4 border-[#49315b]"
+      >
+        <div class="w-5 h-5 bg-white rounded-full"></div>
+        <div class="w-5 h-5 bg-white rounded-full"></div>
+        <div class="w-5 h-5 bg-white rounded-full"></div>
+      </div>
+
+      <h1>Bienvenue <span id="username"></span> !</h1>
+
+      <button id="logout-btn">Déconnexion</button>
+
+      <div id="tasks-container">
+        <div id="unfinished"><h2>En cours</h2></div>
+        <div id="finished"><h2>Terminée</h2></div>
+      </div>
+    </div>
+    <script type="module" src="../js/logoutUser.js"></script>
+    <script type="module" src="../js/userTasks.js"></script>
+  </body>
+</html>

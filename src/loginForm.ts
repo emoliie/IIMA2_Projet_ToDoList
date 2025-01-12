@@ -1,4 +1,4 @@
-import getUser from "./selectUser.js";
+import { login } from "./service/auth.js";
 
 const handleSubmit = async (e: SubmitEvent): Promise<void> => {
   // Empêche le rechargement de la page
@@ -22,10 +22,9 @@ const handleSubmit = async (e: SubmitEvent): Promise<void> => {
 
   try {
     // Appel de la fonction getUser
-    const success = await getUser(email, password);
+    const success = await login(email, password);
     if (success) {
-      alert("Connexion réussie !");
-      // form.reset(); // Réinitialise le formulaire
+      window.location.href = "../view/home.html";
     } else {
       alert("Erreur lors de la connexion. Veuillez réessayer.");
     }
