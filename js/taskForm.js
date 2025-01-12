@@ -18,8 +18,7 @@ const handleSubmit = async (e) => {
         // Appel de la fonction createtask
         const success = await createTask(title, description, new Date(deadline));
         if (success) {
-            alert("Tâche créée avec succès !");
-            form.reset(); // Réinitialise le formulaire
+            window.location.href = '../view/home.html';
         }
         else {
             alert("Erreur lors de la création de la tâche.");

@@ -3,17 +3,16 @@ import { Task } from "../types/task.js";
 
 const createTaskElement = (task: Task): HTMLElement => {
   const div = document.createElement("div");
+  div.className = "task";
+
   const h3 = document.createElement("h3");
+  h3.textContent = task.title;
+
   const p = document.createElement("p");
+  const description = task.description || "Pas de description.";
+  const deadline = new Date(task.deadline).toLocaleDateString("fr-FR"); // Formatte la date
 
-  const title = document.createTextNode(task.title);
-  h3.appendChild(title);
-
-  const description = document.createTextNode(task.description || "");
-  p.appendChild(description);
-
-  const deadline = document.createTextNode(task.deadline);
-  p.appendChild(deadline);
+  p.textContent = `${description} (Date limite : ${deadline})`;
 
   div.appendChild(h3);
   div.appendChild(p);
@@ -25,18 +24,22 @@ const createUnfinishedTaskButtons = (task: Task): HTMLElement => {
   const div = document.createElement("div");
   const finishButton = document.createElement("button");
   finishButton.className = "finish-button";
-  finishButton.textContent = "Validate";
+  finishButton.textContent = "Finir";
 
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
+  deleteButton.textContent = "Supprimer";
   deleteButton.className = "delete-button";
 
-  finishButton.addEventListener("click", (event) => {
-    validateTask(task.id);
+  finishButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    await validateTask(task.id);
+    window.location.href = "../view/home.html";
   });
 
-  deleteButton.addEventListener("click", (event) => {
-    deleteTask(task.id);
+  deleteButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    await deleteTask(task.id);
+    window.location.href = "../view/home.html";
   });
 
   div.appendChild(finishButton);

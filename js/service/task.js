@@ -69,11 +69,9 @@ const validateTask = async (taskId) => {
     const response = await supabaseClient
         .from("tasks")
         .update({
-        description: true,
+        status: true,
     })
         .eq("id", taskId);
-    console.log("RESPONSE : ", response);
-    console.log("Update");
     if (response.error) {
         console.error(`Une erreur est survenue lors de la validation de la tâche ${taskId}`, response.error.message);
         return false;
@@ -85,7 +83,17 @@ const validateTask = async (taskId) => {
  * @param taskId identifiant de la tâche
  */
 const deleteTask = async (taskId) => {
-    console.log("DELETE TASK ", taskId);
+    // Récupère l'utilisateur connecté
+    const user = await getUser();
+    if (!user) {
+        console.error("Impossible de récupérer l'utilisateur connecté.");
+        return false;
+    }
+    const response = await supabaseClient.from("tasks").delete().eq("id", taskId);
+    if (response.error) {
+        console.error(`Une erreur est survenue lors de la suppression de la tâche ${taskId}`, response.error.message);
+        return false;
+    }
     return true;
 };
 export { createTask, getTasks, validateTask, deleteTask };

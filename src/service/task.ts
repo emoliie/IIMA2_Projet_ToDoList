@@ -90,12 +90,9 @@ const validateTask = async (taskId: string): Promise<boolean> => {
   const response = await supabaseClient
     .from("tasks")
     .update({
-      description: true,
+      status: true,
     })
     .eq("id", taskId);
-
-  console.log("RESPONSE : ", response);
-  console.log("Update");
 
   if (response.error) {
     console.error(
@@ -113,7 +110,22 @@ const validateTask = async (taskId: string): Promise<boolean> => {
  * @param taskId identifiant de la tâche
  */
 const deleteTask = async (taskId: string): Promise<boolean> => {
-  console.log("DELETE TASK ", taskId);
+  // Récupère l'utilisateur connecté
+  const user = await getUser();
+  if (!user) {
+    console.error("Impossible de récupérer l'utilisateur connecté.");
+    return false;
+  }
+
+  const response = await supabaseClient.from("tasks").delete().eq("id", taskId);
+
+  if (response.error) {
+    console.error(
+      `Une erreur est survenue lors de la suppression de la tâche ${taskId}`,
+      response.error.message
+    );
+    return false;
+  }
 
   return true;
 };
