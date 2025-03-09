@@ -1,5 +1,6 @@
 import supabaseClient from "./client/init.js";
 import userClient from "./client/loginClient.js";
+
 const isLoggedIn = () => {
     return !!localStorage.getItem("userId");
 };
